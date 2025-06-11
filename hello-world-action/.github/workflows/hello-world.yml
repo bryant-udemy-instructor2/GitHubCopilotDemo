@@ -1,0 +1,31 @@
+name: Hello World Action
+
+on:
+  workflow_dispatch:
+
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hello
+        run: echo "Hello, World"
+
+      - name: Check Action Version
+        run: |
+          if [ -z "${{ github.event.inputs.action_version }}" ]; then
+            echo "No action version provided. Using default."
+          else
+            echo "Using action version: ${{ github.event.inputs.action_version }}"
+          fi
+
+      - name: Check the GitHub Actions runner operating system
+        run: |
+          echo "The GitHub Actions runner is running on: ${{ runner.os }}"
+          echo "The GitHub Actions runner version is: ${{ runner.version }}"
+          echo "The GitHub Actions runner architecture is: ${{ runner.architecture }}"
+
+      - name: Print out the current date and time
+        run: |
+          echo "Current date and time: $(date)"
+          echo "Current user: $(whoami)"
+          echo "Current working directory: $(pwd)"
