@@ -29,3 +29,11 @@ jobs:
           echo "Current date and time: $(date)"
           echo "Current user: $(whoami)"
           echo "Current working directory: $(pwd)"
+
+      - name: List files in the current directory
+        run: |
+          echo "Listing files in the current directory:"
+          ls -la
+          echo "Total number of files: $(ls -1 | wc -l)"
+          echo "Files in the current directory:"
+          ls -1
